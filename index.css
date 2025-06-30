@@ -1,0 +1,340 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.cdnfonts.com/css/neue-machina');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* New Futuristic Color Palette */
+    --color-base-deep: #0A0F27;
+    --color-base-deep-lighter: #141C44;
+    --color-base-deep-darker: #060B1D;
+    
+    --color-accent-primary: #FF6B00;
+    --color-accent-primary-lighter: #FF8A3D;
+    --color-accent-primary-darker: #D85800;
+    
+    --color-highlight-interactive: #00F0FF;
+    --color-highlight-interactive-lighter: #4FF8FF;
+    --color-highlight-interactive-darker: #00C4D1;
+    
+    --color-neutral-cool-gray: #A0A8B8;
+    --color-neutral-cool-gray-lighter: #C2C8D4;
+    --color-neutral-cool-gray-darker: #7A8296;
+  }
+
+  html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    color: white;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Helvetica Neue', sans-serif;
+    background-color: var(--color-base-deep);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Neue Machina', 'Inter', sans-serif;
+    font-weight: 700;
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply backdrop-blur-md border rounded-xl shadow-glass;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.05));
+    border-color: rgba(255, 255, 255, 0.15);
+  }
+  
+  /* Card text colors for better readability */
+  .card-heading {
+    @apply font-medium;
+    color: var(--color-highlight-interactive);
+  }
+  
+  .card-subheading {
+    color: var(--color-neutral-cool-gray-lighter);
+  }
+  
+  .card-text {
+    @apply text-sm;
+    color: var(--color-neutral-cool-gray);
+  }
+  
+  /* White background text colors for better readability */
+  .white-bg-heading {
+    @apply font-semibold;
+    color: var(--color-base-deep);
+  }
+  
+  .white-bg-subheading {
+    color: var(--color-base-deep-lighter);
+  }
+  
+  .white-bg-text {
+    @apply text-sm;
+    color: var(--color-base-deep-lighter);
+  }
+  
+  /* Improved sidebar menu item styles */
+  .sidebar-menu-item {
+    @apply flex items-center px-3 py-2.5 my-1 rounded-lg text-sm font-medium transition-all duration-200;
+  }
+  
+  .sidebar-menu-item-active {
+    background-color: rgba(255, 107, 0, 0.3);
+    @apply text-white shadow-blue-glow;
+  }
+  
+  .sidebar-menu-item-inactive {
+    @apply text-blue-lightest hover:text-white;
+    background-color: transparent;
+    &:hover {
+      background-color: rgba(255, 107, 0, 0.15);
+    }
+  }
+  
+  .sidebar-menu-icon {
+    @apply transition-all duration-200;
+  }
+  
+  .sidebar-menu-icon-active {
+    @apply text-white;
+  }
+  
+  .sidebar-menu-icon-inactive {
+    @apply text-blue-lightest;
+  }
+  
+  .sidebar-submenu-item {
+    @apply flex items-center px-2.5 py-1.5 rounded-md text-xs transition-all duration-200;
+  }
+  
+  .sidebar-submenu-item-active {
+    background-color: rgba(0, 240, 255, 0.2);
+    @apply text-white font-medium;
+  }
+  
+  .sidebar-submenu-item-inactive {
+    @apply text-blue-lightest hover:text-white;
+    &:hover {
+      background-color: rgba(0, 240, 255, 0.1);
+    }
+  }
+
+  /* New button styles */
+  .btn-primary {
+    background-color: var(--color-accent-primary);
+    color: white;
+    @apply px-4 py-2 rounded-lg transition-all duration-200;
+    &:hover {
+      background-color: var(--color-accent-primary-lighter);
+      box-shadow: 0 0 15px rgba(255, 107, 0, 0.5);
+    }
+  }
+
+  .btn-outline {
+    background-color: transparent;
+    border: 1px solid var(--color-highlight-interactive);
+    color: var(--color-highlight-interactive);
+    @apply px-4 py-2 rounded-lg transition-all duration-200;
+    &:hover {
+      background-color: rgba(0, 240, 255, 0.1);
+      box-shadow: 0 0 15px rgba(0, 240, 255, 0.3);
+    }
+  }
+  
+  /* Glass button styles */
+  .btn-glass {
+    @apply backdrop-blur-md bg-white/10 border border-white/20 text-white rounded-lg transition-all duration-200;
+    &:hover {
+      @apply bg-white/20 border-white/30 shadow-highlight-glow;
+    }
+    &:active {
+      @apply shadow-glass-inset transform scale-[0.98];
+    }
+  }
+  
+  /* Glass input styles */
+  .input-glass {
+    @apply backdrop-blur-md bg-white/10 border border-white/20 text-white rounded-lg transition-all duration-200;
+    &:focus {
+      @apply border-highlight-interactive/50 shadow-highlight-glow outline-none;
+    }
+    &::placeholder {
+      @apply text-white/50;
+    }
+  }
+}
+
+@layer utilities {
+  .animation-delay-200 {
+    animation-delay: 200ms;
+  }
+  
+  .animation-delay-400 {
+    animation-delay: 400ms;
+  }
+  
+  /* Cloud shader related utilities */
+  .cloud-shadow {
+    filter: drop-shadow(0 5px 15px rgba(0, 240, 255, 0.3));
+  }
+  
+  .cloud-glow {
+    box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+  }
+  
+  .z-shader {
+    z-index: -1;
+  }
+  
+  .z-shader-overlay {
+    z-index: -1;
+  }
+  
+  .z-content {
+    z-index: 10;
+  }
+  
+  /* Improved text legibility utilities */
+  .text-shadow-sm {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.3);
+  }
+  
+  .text-shadow-md {
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+  
+  .text-shadow-lg {
+    text-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  }
+  
+  .text-glow-blue {
+    text-shadow: 0 0 8px rgba(0, 240, 255, 0.7);
+  }
+  
+  .text-glow-orange {
+    text-shadow: 0 0 8px rgba(255, 107, 0, 0.7);
+  }
+  
+  .text-glow-white {
+    text-shadow: 0 0 8px rgba(255, 255, 255, 0.7);
+  }
+  
+  /* Custom filter utility for icon glow effect */
+  .icon-glow-white {
+    filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.5));
+  }
+
+  .icon-glow-cyan {
+    filter: drop-shadow(0 0 3px rgba(0, 240, 255, 0.5));
+  }
+
+  .icon-glow-orange {
+    filter: drop-shadow(0 0 3px rgba(255, 107, 0, 0.5));
+  }
+
+  /* New gradient utilities */
+  .bg-gradient-futuristic {
+    background: linear-gradient(135deg, var(--color-base-deep) 0%, var(--color-base-deep-lighter) 100%);
+  }
+
+  .bg-gradient-accent {
+    background: linear-gradient(135deg, var(--color-accent-primary) 0%, var(--color-accent-primary-lighter) 100%);
+  }
+
+  .bg-gradient-highlight {
+    background: linear-gradient(135deg, var(--color-highlight-interactive) 0%, var(--color-highlight-interactive-lighter) 100%);
+  }
+
+  .bg-gradient-glass {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+  }
+  
+  /* Glass blur utilities */
+  .backdrop-blur-glass {
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+  
+  .backdrop-blur-glass-sm {
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+  
+  .backdrop-blur-glass-lg {
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+  }
+}
+
+@keyframes blink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.animate-blink {
+  animation: blink 1s infinite;
+}
+
+@keyframes cloud-drift {
+  0% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(20px) translateY(-10px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+.animate-cloud-drift {
+  animation: cloud-drift 20s ease-in-out infinite;
+}
+
+@keyframes cloud-drift-alt {
+  0% { transform: translateX(0) translateY(0); }
+  50% { transform: translateX(-15px) translateY(10px); }
+  100% { transform: translateX(0) translateY(0); }
+}
+
+.animate-cloud-drift-alt {
+  animation: cloud-drift-alt 25s ease-in-out infinite;
+}
+
+@keyframes glow-pulse {
+  0%, 100% { opacity: 0.8; text-shadow: 0 0 5px rgba(255, 255, 255, 0.5); }
+  50% { opacity: 1; text-shadow: 0 0 15px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 240, 255, 0.6); }
+}
+
+.animate-glow-pulse {
+  animation: glow-pulse 3s infinite ease-in-out;
+}
+
+/* New animations */
+@keyframes float-up {
+  0% { transform: translateY(10px); opacity: 0; }
+  100% { transform: translateY(0); opacity: 1; }
+}
+
+.animate-float-up {
+  animation: float-up 0.8s ease-out forwards;
+}
+
+@keyframes highlight-pulse {
+  0%, 100% { box-shadow: 0 0 15px rgba(0, 240, 255, 0.4); }
+  50% { box-shadow: 0 0 25px rgba(0, 240, 255, 0.7); }
+}
+
+.animate-highlight-pulse {
+  animation: highlight-pulse 3s infinite ease-in-out;
+}
+
+/* Text glow animation */
+@keyframes text-glow {
+  0%, 100% { text-shadow: 0 0 5px rgba(255, 255, 255, 0.5), 0 0 10px rgba(0, 240, 255, 0.3); }
+  50% { text-shadow: 0 0 10px rgba(255, 255, 255, 0.8), 0 0 20px rgba(0, 240, 255, 0.6), 0 0 30px rgba(0, 240, 255, 0.4); }
+}
+
+.animate-text-glow {
+  animation: text-glow 3s infinite ease-in-out;
+}
